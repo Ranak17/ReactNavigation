@@ -109,12 +109,9 @@ icon:{
   height:40
 },
 post:{
-  // backgroundColor:'gold',
   height:120,
   width:126,
   marginBottom:2
-  // overflow:'hidden',
-  // flex:.328,
 },
 postPic:{
   height:120,
