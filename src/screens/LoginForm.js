@@ -7,7 +7,7 @@ export default function LoginForm({navigation}) {
   function submit(){
 
     if((name=="karan") && (pswd=="pass")){
-      navigation.navigate('Home',{userName:name});
+      navigation.navigate('bottomTab',{userName:name});
     }else{
       Alert.alert("username or passweord is incorrect");
     }
@@ -22,7 +22,7 @@ export default function LoginForm({navigation}) {
         <View >
           <View style={{height:250,alignItems:'center',justifyContent:'center'}}>
             <View style={{height:200,width:200,borderRadius:100,overflow:'hidden'}}>
-            <Image style={{backgroundColor:'pink',height:'100%',width:'100%'}} source={require('../../assets/icon.png')} /></View>
+            <Image style={{backgroundColor:'pink',height:'100%',width:'100%'}} source={require('../../assets/insta.jpg')} /></View>
           </View>
           <View style={{alignItems:'center',marginTop:5}}><Text style={{fontSize:30}}>Login Form</Text></View>
           <View style={{marginTop:30,marginHorizontal:10}}>

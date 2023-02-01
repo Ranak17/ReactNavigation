@@ -1,21 +1,20 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Contact from "../../src/screens/Contact.js";
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
 import Search from "../screens/Search.js";
-import MainStackNavigator from "./StackNavigator.js";
 import Settings from "../screens/Settings.js";
 import Likes from "../screens/Likes.js";
+import Home from "../screens/Home.js";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={{headerShown:false,
        tabBarShowLabel:false,
-        tabBarStyle:[{display:'flex'},null]}} >
-      <Tab.Screen name="Homes" component={MainStackNavigator} options={{
+        tabBarStyle:[{display:'flex'},null]}} initialRouteName="Home" >
+      <Tab.Screen name="Home" component={Home} options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-home" color={color} size={size} />
           ),
