@@ -3,9 +3,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Contact from "../../src/screens/Contact.js";
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
 import Search from "../screens/Search.js";
 import MainStackNavigator from "./StackNavigator.js";
 import Settings from "../screens/Settings.js";
+import Likes from "../screens/Likes.js";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -26,6 +28,11 @@ const BottomTabNavigator = () => {
         <Tab.Screen name="Search" component={Search} options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="search" size={size} color={color} />
+          ),
+        }}/>
+        <Tab.Screen name="Likes" component={Likes} options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="heart-o" size={size} color={color} />
           ),
         }}/>
     </Tab.Navigator>
