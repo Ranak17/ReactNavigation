@@ -9,11 +9,12 @@ import Likes from "../screens/Likes.js";
 import Home from "../screens/Home.js";
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = ({route}) => {
+  
   return (
     <Tab.Navigator screenOptions={{headerShown:false,
        tabBarShowLabel:false,
-        tabBarStyle:[{display:'flex'},null]}} initialRouteName="Home" >
+        tabBarStyle:[{display:'flex'},null]}} >
       <Tab.Screen name="Home" component={Home} options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-home" color={color} size={size} />

@@ -41,9 +41,9 @@ export default function Home({navigation}) {
         <View style={{height:110,width:'100%',flexDirection:'row',justifyContent:'flex-start',alignItems:'flex-start',marginTop:3}}>
         <View style={{width:90,height:'100%',justifyContent:'center',alignItems:'center',marginHorizontal:3}}>
             <View style={{width:80,height:80,borderRadius:100,borderWidth:1,borderColor:'#efefef', justifyContent:'center',alignItems:'center'}}>
-              <View style={{width:75,height:75,margin:1,borderColor:'#efefef',borderWidth:1,borderRadius:100,overflow:'hidden'}}>
+              <TouchableOpacity style={{width:75,height:75,margin:1,borderColor:'#efefef',borderWidth:1,borderRadius:100,overflow:'hidden'}} onPress={()=>{console.log("click hua")}}>
                 <Image source={require('../../assets/car1.jpg')} style={{width:75,height:75, resizeMode:'contain',flex:1}}/>
-              </View>
+              </TouchableOpacity>
             </View>
           <Text>b17 family</Text>
           </View>
@@ -62,22 +62,22 @@ export default function Home({navigation}) {
         </View>
         </View>
         <View style={{flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
-          <View style={Style.post}>
+          <TouchableOpacity style={Style.post} onPress={()=>{navigation.navigate("Posts")}}>
             {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/hanuman.jpg")}/>
-          </View>
-          <View style={Style.post}>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
             {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/car1.jpg")}/>
-          </View>
-          <View style={Style.post}>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
             {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/ganesha.jpg")}/>
-          </View>
-          <View style={Style.post}>
+          </TouchableOpacity>
+          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
             {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/shiva.jpg")}/>
-          </View>
+          </TouchableOpacity>
         </View>
     </View>
   )

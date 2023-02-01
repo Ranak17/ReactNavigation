@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {View,Text, StatusBar, StyleSheet, TextInput, TouchableOpacity, Image,Keyboard, ScrollView, KeyboardAvoidingView, Alert} from 'react-native';
-
+import Home from "../screens/Home.js";
 export default function LoginForm({navigation}) {
   const [name,setName]=useState("");
   const [pswd,setPswd]=useState("");
   function submit(){
 
-    if((name=="karan") && (pswd=="pass")){
-      navigation.navigate('bottomTab',{userName:name});
+    if((name=="kk") && (pswd=="kk")){
+      navigation.navigate('Profile',{name:"Home",comp:"Home"});
     }else{
       Alert.alert("username or passweord is incorrect");
     }
