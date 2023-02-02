@@ -7,7 +7,7 @@ export default function LoginForm({navigation}) {
   function submit(){
 
     if((name=="kk") && (pswd=="kk")){
-      navigation.navigate('Profile',{name:"Home",comp:"Home"});
+      navigation.navigate('Home',{user:true});
     }else{
       Alert.alert("username or passweord is incorrect");
     }

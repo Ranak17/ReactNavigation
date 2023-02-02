@@ -1,10 +1,49 @@
 import React from 'react';
-import {View,Text,StatusBar, StyleSheet, Image, Button, TouchableOpacity} from 'react-native';
+import {View,Text,StatusBar, StyleSheet, Image, Button, TouchableOpacity,ScrollView} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { FontAwesome5 } from '@expo/vector-icons'
-import { FontAwesome } from '@expo/vector-icons'
+import Footer from '../screens/Footer';
 export default function Home({navigation}) {
+  const names=[
+    {   id:1,
+        name:'shiva',
+        picSource:require('../../assets/shiva.jpg')
+    },
+    {
+        id:2,
+        name:'ganesh',
+        picSource:require('../../assets/ganesha.jpg')
+    },
+    {
+        id:3,
+        name:'hanuman',
+        picSource:require('../../assets/hanuman.jpg')
+    },
+    {
+        id:4,
+        name:'car1',
+        picSource:require('../../assets/car1.jpg')
+    },
+    {
+        id:5,
+        name:'car2',
+        picSource:require('../../assets/1st.jpg')
+    },
+    {
+        id:6,
+        name:'car2',
+        picSource:require('../../assets/car2.jpg')
+    },
+    {
+        id:7,
+        name:'hanuman',
+        picSource:require('../../assets/hanuman.jpg')
+    }] 
   return (
+    <>
+    <ScrollView   contentContainerStyle={{
+    minHeight: '100%',
+    paddingBottom: 60,
+  }}>
     <View style={{flex:1,backgroundColor:'white'}}>
         <StatusBar />
         <View style={{marginHorizontal:10,flex:.6,backgroundColor:'white'}}>
@@ -62,24 +101,19 @@ export default function Home({navigation}) {
         </View>
         </View>
         <View style={{flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
-          <TouchableOpacity style={Style.post} onPress={()=>{navigation.navigate("Posts")}}>
+          {names.map((ele,index)=>{
+            return(<TouchableOpacity style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
             {/* <Text>Karan</Text> */}
-            <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/hanuman.jpg")}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
-            {/* <Text>Karan</Text> */}
-            <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/car1.jpg")}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
-            {/* <Text>Karan</Text> */}
-            <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/ganesha.jpg")}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={Style.post} onPress={()=>{console.log('click hua')}}>
-            {/* <Text>Karan</Text> */}
-            <Image resizeMode='contain' style={Style.postPic} source={require("../../assets/shiva.jpg")}/>
-          </TouchableOpacity>
-        </View>
+            <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
+          </TouchableOpacity>)
+          })}
+          
+      </View>
     </View>
+    </ScrollView>
+    <Footer />
+
+    </>
   )
 }
 
@@ -109,12 +143,12 @@ icon:{
   height:40
 },
 post:{
-  height:120,
+  height:130,
   width:126,
   marginBottom:2
 },
 postPic:{
-  height:120,
+  height:130,
   width:'100%',
   resizeMode:'cover',
 }
