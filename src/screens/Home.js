@@ -102,7 +102,7 @@ export default function Home({navigation}) {
         </View>
         <View style={{flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
           {names.map((ele,index)=>{
-            return(<TouchableOpacity style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
+            return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
             {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
           </TouchableOpacity>)

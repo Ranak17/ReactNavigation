@@ -7,6 +7,7 @@ import Search from "../screens/Search.js";
 import Settings from "../screens/Settings.js";
 import Likes from "../screens/Likes.js";
 import Home from "../screens/Home.js";
+import PostSettings from "../screens/PostSettings";
 const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
@@ -18,7 +19,7 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Likes" component={Likes}/>
       <Stack.Screen name="Home" component={Home}/>
       <Stack.Screen name="Settings" component={Settings}/>
-      {/* <Stack.Screen name="About" component={About} /> */}
+      <Stack.Screen name="PostSettings" component={PostSettings}/>
     </Stack.Navigator>
   );
 }
