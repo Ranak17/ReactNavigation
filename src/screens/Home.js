@@ -5,39 +5,20 @@ import Footer from '../screens/Footer';
 export default function Home({navigation}) {
   const names=[
     {   id:1,
-        name:'shiva',
-        picSource:require('../../assets/shiva.jpg')
+        picSource:require('../../assets/1.webp')
     },
     {
         id:2,
-        name:'ganesh',
-        picSource:require('../../assets/ganesha.jpg')
+        picSource:require('../../assets/2.webp')
     },
     {
         id:3,
-        name:'hanuman',
-        picSource:require('../../assets/hanuman.jpg')
+        picSource:require('../../assets/4.webp')
     },
     {
         id:4,
-        name:'car1',
-        picSource:require('../../assets/car1.jpg')
-    },
-    {
-        id:5,
-        name:'car2',
-        picSource:require('../../assets/1st.jpg')
-    },
-    {
-        id:6,
-        name:'car2',
-        picSource:require('../../assets/car2.jpg')
-    },
-    {
-        id:7,
-        name:'hanuman',
-        picSource:require('../../assets/hanuman.jpg')
-    }] 
+        picSource:require('../../assets/5.webp')
+    }]  
   return (
     <>
     <ScrollView   contentContainerStyle={{
