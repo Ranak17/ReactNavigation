@@ -1,24 +1,25 @@
-import React from 'react';
+import React , {useEffect,useState} from 'react';
 import {View,Text,StatusBar, StyleSheet, Image, Button, TouchableOpacity,ScrollView} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import Footer from '../screens/Footer';
 export default function Home({navigation}) {
   const names=[
-    {   id:1,
-        picSource:require('../../assets/1.webp')
-    },
-    {
-        id:2,
-        picSource:require('../../assets/2.webp')
-    },
-    {
-        id:3,
-        picSource:require('../../assets/4.webp')
-    },
-    {
-        id:4,
-        picSource:require('../../assets/5.webp')
-    }]  
+      {   id:"1",
+          picSource:require('../../assets/1.webp')
+      },
+      {
+          id:"2",
+          picSource:require('../../assets/2.webp')
+      },
+      {
+          id:"3",
+          picSource:require('../../assets/4.webp')
+      },
+      {
+          id:"4",
+          picSource:require('../../assets/5.webp')
+      }]
+    const profilePic=require('../../assets/shiva.jpg');
   return (
     <>
     <ScrollView   contentContainerStyle={{
@@ -31,7 +32,7 @@ export default function Home({navigation}) {
         <View style={{height:100,width:'100%',marginTop:5}}>
           <View style={{flexDirection:'row',flex:1}}>
             <View style={{borderRadius:100,overflow:'hidden',width:100,alignItems:'center',justifyContent:'center'}}>
-              <Image style={{flex:1}}resizeMode='contain' source={require('../../assets/shiva.jpg')}/>
+              <Image style={{flex:1}}resizeMode='contain' source={profilePic}/>
             </View>
             <View style={Style.pofofo}>
               <Text>12</Text>
@@ -84,7 +85,6 @@ export default function Home({navigation}) {
         <View style={{flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
           {names.map((ele,index)=>{
             return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
-            {/* <Text>Karan</Text> */}
             <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
           </TouchableOpacity>)
           })}

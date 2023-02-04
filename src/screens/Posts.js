@@ -1,5 +1,5 @@
 import React, {useRef, useEffect,useState} from 'react'
-import { View,Text,Image, ScrollView, FlatList,StyleSheet,Dimensions,Animated, TouchableOpacity,RefreshControl } from 'react-native';
+import { View,Text,Image, FlatList,StyleSheet,Dimensions,Animated, TouchableOpacity,RefreshControl } from 'react-native';
 import { Entypo,Feather,FontAwesome5, AntDesign,FontAwesome,MaterialCommunityIcons,Ionicons,SimpleLineIcons  } from '@expo/vector-icons';
 import Footer from "../screens/Footer";
 import PostSettings from './PostSettings';
@@ -17,19 +17,19 @@ function Posts({route}) {
 //      id= 0;
 // }   
  const names=[
-        {   id:1,
+        {   id:"1",
             picSource:require('../../assets/1.webp')
         },
         {
-            id:2,
+            id:"2",
             picSource:require('../../assets/2.webp')
         },
         {
-            id:3,
+            id:"3",
             picSource:require('../../assets/4.webp')
         },
         {
-            id:4,
+            id:"4",
             picSource:require('../../assets/5.webp')
         }]  
 
@@ -50,16 +50,17 @@ function Posts({route}) {
         useNativeDriver:true
     });
   return (<>
-    <TouchableOpacity activeOpacity={1} style={{flex:1,backgroundColor:'white',opacity:opacity}} onPress={()=>{animUp.stop();
-    animDown.start();
-    setOpacity(1);
-    }}>
+    <View activeOpacity={1} style={{flex:1,backgroundColor:'white',opacity:opacity}}>
     <FlatList 
+    keyExtractor={(item)=>{return item.id}}
     refreshControl={
         <RefreshControl 
         refreshing={false}
         />
     }
+    removeClippedSubviews={true}
+    initialNumToRender={2}
+    windowSize={5}
     data={names}
     initialScrollIndex={id}
     renderItem={(ele,index)=>{
@@ -99,7 +100,7 @@ function Posts({route}) {
         <View style={{height:100}}><Text>Comment Box</Text></View>
       </View>);
     }}/>
-    </TouchableOpacity>
+    </View>
     <Animated.View style={{display:hidden,position:'absolute',width:'100%',transform:[{translateY:topValue}],height:'100%',borderTopLeftRadius:20,borderTopRightRadius:20,backgroundColor:'white'}}>
         <View style={{flex:.15,borderBottomWidth:1,padding:10}}>
             <View style={{felx:1,flexDirection:'row',marginTop:10}}>
