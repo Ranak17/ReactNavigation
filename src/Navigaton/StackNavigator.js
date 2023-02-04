@@ -12,8 +12,9 @@ const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown:true}} initialRouteName="Home">
-      <Stack.Screen name="LoginForm" component={LoginForm} />
+
+    <Stack.Navigator screenOptions={{headerShown:true}} initialRouteName="Insta">
+      <Stack.Screen name="Instagram" options={{headerLeft:null}} component={LoginForm} />
       <Stack.Screen name="Posts" component={Posts}/>
       <Stack.Screen name="Search" component={Search}/>
       <Stack.Screen name="Likes" component={Likes}/>

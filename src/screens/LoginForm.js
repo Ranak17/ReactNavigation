@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import {View,Text, StatusBar, StyleSheet, TextInput, TouchableOpacity, Image,Keyboard, ScrollView, KeyboardAvoidingView, Alert} from 'react-native';
+import {View,Text, StatusBar, StyleSheet, TextInput, TouchableOpacity, Image,Keyboard, ScrollView, KeyboardAvoidingView, Alert, Animated,Dimensions} from 'react-native';
 import Home from "../screens/Home.js";
+import SignupForm from './SignupForm.js';
 export default function LoginForm({navigation}) {
   const [name,setName]=useState("");
   const [pswd,setPswd]=useState("");
+  let phoneWidth=Dimensions.get('window').width;
+  const left=useState(new Animated.Value(phoneWidth))[0];
+  const suFA =Animated.timing(left,{
+    toValue:0,
+    duration:100,
+    useNativeDriver:true
+  })
+  const suFA2 =Animated.timing(left,{
+    toValue:left,
+    duration:100,
+    useNativeDriver:true
+  })
   function submit(){
 
     if((name=="kk") && (pswd=="kk")){
@@ -16,7 +29,11 @@ export default function LoginForm({navigation}) {
 
   return (
     // <KeyboardAvoidingView behavior='padding'>
-    <ScrollView>
+    <>
+    <ScrollView id='1'style={{backgroundColor:'white',flex:1}}>
+    <Animated.View style={{width:'100%',height:'100%',backgroundColor:'gray',position:'absolute',zIndex:1,transform:[{translateX:left}]}}>
+      <SignupForm suFA2={suFA2}/>
+    </Animated.View>
     <View style={{flex:1}}>
         <StatusBar backgroundColor={"gray"}/>
         <View >
@@ -46,10 +63,13 @@ export default function LoginForm({navigation}) {
             />
           </View>
           <TouchableOpacity style={styles.btn} onPress={()=>{submit()}}><Text style={styles.btnTxt}> Sign in</Text></TouchableOpacity>
-          <View style={{marginHorizontal:10}}><Text style={{fontSize:17}}>If You are new then please <Text style={{color:'blue'}}>Sign Up</Text></Text></View>
+          <View style={{marginHorizontal:10}}>
+            <Text style={{fontSize:17}}>If You are new then please<Text style={{color:'blue'}} onPress={()=>suFA.start()}>Sign Up</Text></Text></View>
         </View>
     </View>
     </ScrollView>
+
+    </>
     // </KeyboardAvoidingView>
   )
 }
