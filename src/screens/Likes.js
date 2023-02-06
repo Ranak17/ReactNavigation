@@ -4,10 +4,12 @@ import Footer from './Footer';
 
 function Likes() {
   return (
+    <>
     <View>
         <Text>Likes page</Text>
-        <Footer/>
     </View>
+    <Footer/>
+    </>
   )
 }
 

@@ -23,12 +23,13 @@ export default function LoginForm({navigation}) {
   function submit(){
       fetch(`http://192.168.1.9:3005/users/${username}/${password}`).then((res)=>{
         if(res.ok){
+          navigation.navigate('Home');
           return res.json();
         }else{
           console.log("error while submiting form");
         }
       }).then((resp)=>{
-        navigation.navigate('Home');
+        
       });
     }
   return (
