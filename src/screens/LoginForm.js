@@ -5,8 +5,9 @@ import SignupForm from './SignupForm.js';
 import Login from './Login.js';
 export default function LoginForm({navigation}) {
   // console.log(navigation);
-  const [name,setName]=useState("");
-  const [pswd,setPswd]=useState("");
+  const [username,setUsername]=useState("");
+  const [password,setPassword]=useState("");
+  console.log({username,password})
   let phoneWidth=Dimensions.get('window').width;
   const left=useState(new Animated.Value(phoneWidth))[0];
   const suFA =Animated.timing(left,{
@@ -20,19 +21,20 @@ export default function LoginForm({navigation}) {
     useNativeDriver:true
   })
   function submit(){
-
-    if((name=="kk") && (pswd=="kk")){
-      navigation.navigate('Home',{user:true});
-    }else{
-      Alert.alert("username or passweord is incorrect");
+      fetch(`http://192.168.1.9:3005/users?username=${username}&password=${password}`).then((res)=>{
+        if(res.ok){
+          console.log("1st stage");
+          return res.json();
+        }else{
+          console.log("error while submiting form");
+        }
+      }).then((resp)=>{
+        console.log(resp);
+      });
     }
-  }
-  
-
   return (
     // <KeyboardAvoidingView behavior='padding'>
     <>
-    {/* <ScrollView style={{flex:1}}> */}
     <Animated.View style={{width:'100%',height:'100%',position:'absolute',zIndex:1,transform:[{translateX:left}]}}>
       <SignupForm suFA2={suFA2} suFA={suFA} navigatiion={navigation}/>
     </Animated.View>
@@ -45,13 +47,13 @@ export default function LoginForm({navigation}) {
           </View>
           <View style={{alignItems:'center',marginTop:5}}><Text style={{fontSize:30}}>Login Form</Text></View>
           <View style={{marginTop:30,marginHorizontal:10}}>
-            <Text style={{fontSize:18,marginVertical:10}}>Enter Your Name</Text>
+            <Text style={{fontSize:18,marginVertical:10}}>Enter Username</Text>
             <TextInput style={styles.inptField}
             autoCapitalize="none"
             autoCorrect={false}
             // placeholder="Karan"
-            value={name}
-            onChangeText={(ele)=>{setName(ele)}}
+            value={username}
+            onChangeText={(ele)=>{setUsername(ele)}}
             />
           </View>
           <View style={{marginTop:20,marginHorizontal:10}}>
@@ -60,8 +62,8 @@ export default function LoginForm({navigation}) {
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry={true}
-            value={pswd}
-            onChangeText={(ele)=>{setPswd(ele)}}
+            value={password}
+            onChangeText={(ele)=>{setPassword(ele)}}
             />
           </View>
           <TouchableOpacity style={styles.btn} onPress={()=>{submit()}}><Text style={styles.btnTxt}> Sign in</Text></TouchableOpacity>

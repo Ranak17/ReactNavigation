@@ -10,7 +10,7 @@ function SignupForm(props) {
     fetch('http://192.168.1.9:3005/users',
     {
       method:'POST',
-      // mode: 'cors',
+      mode: 'cors',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(data)
     }).then((res)=>{
@@ -75,7 +75,7 @@ function SignupForm(props) {
             />
           </View>
           <TouchableOpacity style={styles.btn} onPress={()=>{submit()}}><Text style={styles.btnTxt}> Sign Up</Text></TouchableOpacity>
-          <View style={{marginHorizontal:10}}><Text style={{fontSize:17}}>If You already have account then <Text style={{color:'blue'}} onPress={()=>props.suFA2.start()}>Sign In</Text></Text></View>
+          <View style={{marginHorizontal:10,marginTop:10}}><Text style={{fontSize:17}}>If You already have account then <Text style={{color:'blue'}} onPress={()=>props.suFA2.start()}>Sign In</Text></Text></View>
         </View>
     </View>
     </ScrollView>

@@ -31,10 +31,10 @@ app.get("/users",(req,res)=>{
 client.end;
 })
 
-app.get('/users/:id', (req, res)=>{
+app.get('/users/:username/:password', (req, res)=>{
     console.log(req.body);
-    client.query(`Select * from userlogin where id=${req.params.id}`, (err, result)=>{
-        if(!err){
+    client.query(`Select coutn(*) from usersignupdata where username=${req.params.username} and password=${req.params.password}`, (err, result)=>{
+        if(!err && result>=1){
             res.send(result.rows);
         }
     }),
@@ -47,7 +47,7 @@ app.post('/users', (req, res)=> {
     client.query(insertQuery, (err, result)=>{
         if(!err){
             res.send('Insertion was successful');
-            // navigation.navigate('Instagram');
+            NavigationPreloadManager.na
         }
         else{ console.log(err.message) }
     })
