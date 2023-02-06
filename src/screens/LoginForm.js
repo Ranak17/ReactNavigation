@@ -7,7 +7,7 @@ export default function LoginForm({navigation}) {
   // console.log(navigation);
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
-  console.log({username,password})
+  // console.log({username,password})
   let phoneWidth=Dimensions.get('window').width;
   const left=useState(new Animated.Value(phoneWidth))[0];
   const suFA =Animated.timing(left,{
@@ -21,15 +21,14 @@ export default function LoginForm({navigation}) {
     useNativeDriver:true
   })
   function submit(){
-      fetch(`http://192.168.1.9:3005/users?username=${username}&password=${password}`).then((res)=>{
+      fetch(`http://192.168.1.9:3005/users/${username}/${password}`).then((res)=>{
         if(res.ok){
-          console.log("1st stage");
           return res.json();
         }else{
           console.log("error while submiting form");
         }
       }).then((resp)=>{
-        console.log(resp);
+        navigation.navigate('Home');
       });
     }
   return (
