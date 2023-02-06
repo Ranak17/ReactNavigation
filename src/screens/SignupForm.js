@@ -1,10 +1,30 @@
 import React, {useState} from 'react';
-import {View,Text, StyleSheet,TextInput,ScrollView,StatusBar,Image,TouchableOpacity} from 'react-native';
-function SignupForm(props,{navigation}) {
-    const [name,setName]=useState("");
-  const [pswd,setPswd]=useState("");
+import {View,Text, StyleSheet,TextInput,ScrollView,StatusBar,Image,TouchableOpacity,RefreshControl} from 'react-native';
+function SignupForm(props) {
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [username,setUsername]=useState("");
+  const [password,setPassword]=useState("");
+  const submit = () =>{
+    let data={name,email,username,password};
+    fetch('http://192.168.1.9:3005/users',
+    {
+      method:'POST',
+      // mode: 'cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    }).then((res)=>{
+      if(res.ok){
+        console.log("navigation is not working")
+      }else{
+        console.log("error while submiting form");
+      }
+    });
+    props.suFA2.start();
+  }
+  // console.log({name,email,username,password});
   return (
-    <ScrollView style={{backgroundColor:'white',flex:1}}>
+    <ScrollView style={{backgroundColor:'white'}}>
     <View>
         <StatusBar backgroundColor={"gray"}/>
         <View >
@@ -30,8 +50,8 @@ function SignupForm(props,{navigation}) {
             autoCapitalize="none"
             autoCorrect={false}
             // placeholder="Karan"
-            value={name}
-            onChangeText={(ele)=>{setName(ele)}}
+            value={email}
+            onChangeText={(ele)=>{setEmail(ele)}}
             />
           </View>          
           <View style={{marginTop:30,marginHorizontal:10}}>
@@ -40,8 +60,8 @@ function SignupForm(props,{navigation}) {
             autoCapitalize="none"
             autoCorrect={false}
             // placeholder="Karan"
-            value={name}
-            onChangeText={(ele)=>{setName(ele)}}
+            value={username}
+            onChangeText={(ele)=>{setUsername(ele)}}
             />
           </View>
           <View style={{marginTop:20,marginHorizontal:10}}>
@@ -50,8 +70,8 @@ function SignupForm(props,{navigation}) {
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry={true}
-            value={pswd}
-            onChangeText={(ele)=>{setPswd(ele)}}
+            value={password}
+            onChangeText={(ele)=>{setPassword(ele)}}
             />
           </View>
           <TouchableOpacity style={styles.btn} onPress={()=>{submit()}}><Text style={styles.btnTxt}> Sign Up</Text></TouchableOpacity>
@@ -66,7 +86,6 @@ function SignupForm(props,{navigation}) {
 const styles=StyleSheet.create({
     inptField:{
       fontSize:18,
-      // backgroundColor:'pink',
        borderWidth:1,
        paddingLeft:8,
        borderColor:'gray',
@@ -76,7 +95,6 @@ const styles=StyleSheet.create({
     // borderColor:'gray'
     },
     btn:{
-      backgroundColor:'pink',
     height:40,
     justifyContent:'center',
     alignItems:'center',

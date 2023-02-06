@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import {View,Text, StatusBar, StyleSheet, TextInput, TouchableOpacity, Image,Keyboard, ScrollView, KeyboardAvoidingView, Alert, Animated,Dimensions} from 'react-native';
 import Home from "../screens/Home.js";
 import SignupForm from './SignupForm.js';
+import Login from './Login.js';
 export default function LoginForm({navigation}) {
+  // console.log(navigation);
   const [name,setName]=useState("");
   const [pswd,setPswd]=useState("");
   let phoneWidth=Dimensions.get('window').width;
@@ -30,16 +32,16 @@ export default function LoginForm({navigation}) {
   return (
     // <KeyboardAvoidingView behavior='padding'>
     <>
-    <ScrollView id='1'style={{backgroundColor:'white',flex:1}}>
-    <Animated.View style={{width:'100%',height:'100%',backgroundColor:'gray',position:'absolute',zIndex:1,transform:[{translateX:left}]}}>
-      <SignupForm suFA2={suFA2}/>
+    {/* <ScrollView style={{flex:1}}> */}
+    <Animated.View style={{width:'100%',height:'100%',position:'absolute',zIndex:1,transform:[{translateX:left}]}}>
+      <SignupForm suFA2={suFA2} suFA={suFA} navigatiion={navigation}/>
     </Animated.View>
-    <View style={{flex:1}}>
+    <ScrollView style={{flex:1,backgroundColor:'white'}}>
         <StatusBar backgroundColor={"gray"}/>
         <View >
           <View style={{height:250,alignItems:'center',justifyContent:'center'}}>
             <View style={{height:200,width:200,borderRadius:100,overflow:'hidden'}}>
-            <Image style={{backgroundColor:'pink',height:'100%',width:'100%'}} source={require('../../assets/insta.jpg')} /></View>
+            <Image style={{height:'100%',width:'100%'}} source={require('../../assets/insta.jpg')} /></View>
           </View>
           <View style={{alignItems:'center',marginTop:5}}><Text style={{fontSize:30}}>Login Form</Text></View>
           <View style={{marginTop:30,marginHorizontal:10}}>
@@ -66,7 +68,7 @@ export default function LoginForm({navigation}) {
           <View style={{marginHorizontal:10}}>
             <Text style={{fontSize:17}}>If You are new then please<Text style={{color:'blue'}} onPress={()=>suFA.start()}>Sign Up</Text></Text></View>
         </View>
-    </View>
+    
     </ScrollView>
 
     </>
@@ -78,7 +80,6 @@ export default function LoginForm({navigation}) {
 const styles=StyleSheet.create({
   inptField:{
     fontSize:18,
-    // backgroundColor:'pink',
      borderWidth:1,
      paddingLeft:8,
      borderColor:'gray',
@@ -88,7 +89,6 @@ const styles=StyleSheet.create({
   // borderColor:'gray'
   },
   btn:{
-    backgroundColor:'pink',
   height:40,
   justifyContent:'center',
   alignItems:'center',
