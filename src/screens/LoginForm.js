@@ -21,15 +21,16 @@ export default function LoginForm({navigation}) {
     useNativeDriver:true
   })
   function submit(){
-      fetch(`http://192.168.1.9:3005/users/${username}/${password}`).then((res)=>{
+      fetch(`http://20.0.12.38:3005/users/${username}/${password}`).then((res)=>{
         if(res.ok){
           navigation.navigate('Home');
           return res.json();
         }else{
-          console.log("error while submiting form");
+          console.log("username or password incorrect");
+          return res.json;
         }
       }).then((resp)=>{
-        
+        console.log(resp);
       });
     }
   return (

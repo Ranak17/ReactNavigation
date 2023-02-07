@@ -1,5 +1,5 @@
-import React , {useEffect,useState} from 'react';
-import {View,Text,StatusBar, StyleSheet, Image, Button, TouchableOpacity,ScrollView} from 'react-native';
+import React , {useEffect,useState,useRef} from 'react';
+import {View,Text,StatusBar, StyleSheet, Image, Button, TouchableOpacity,ScrollView,Dimensions, FlatList} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import Footer from '../screens/Footer';
 export default function Home({navigation}) {
@@ -19,7 +19,9 @@ export default function Home({navigation}) {
           id:"4",
           picSource:require('../../assets/5.webp')
       }]
+      const scrollRef=useRef(null);
     const profilePic=require('../../assets/shiva.jpg');
+    const phoneWidth=Dimensions.get('window').width;
   return (
     <>
     <ScrollView   contentContainerStyle={{
@@ -78,18 +80,24 @@ export default function Home({navigation}) {
           </View>
         </View>
         <View style={{height:30,flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-          <View style={Style.icon}><MaterialIcons name="grid-on" size={24} color="gray" /></View>
-          <View style={Style.icon}><MaterialIcons name="grid-on" size={24} color='gray' /></View>
+          <TouchableOpacity style={Style.icon} onPress={()=>scrollRef.current.scrollTo({x:phoneWidth,y:0,animated:true})}><MaterialIcons name="grid-on" size={24} color="gray" /></TouchableOpacity>
+          <TouchableOpacity style={Style.icon} onPress={()=>scrollRef.current.scrollTo({x:-phoneWidth,y:0,animated:true})}><MaterialIcons name="grid-on" size={24} color='gray' /></TouchableOpacity>
         </View>
         </View>
-        <View style={{flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
-          {names.map((ele,index)=>{
-            return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
-            <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
-          </TouchableOpacity>)
-          })}
-          
-      </View>
+        <ScrollView horizontal ref={scrollRef}>
+          <View style={{width:phoneWidth,flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
+            {names.map((ele,index)=>{
+              return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
+              <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
+            </TouchableOpacity>)
+            })}
+            
+        </View>
+        <View style={{width:phoneWidth,backgroundColor:'pink'}}><Text>Karan</Text></View>
+      </ScrollView>
+
+
+
     </View>
     </ScrollView>
     <Footer />

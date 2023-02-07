@@ -7,7 +7,7 @@ function SignupForm(props) {
   const [password,setPassword]=useState("");
   const submit = () =>{
     let data={name,email,username,password};
-    fetch('http://192.168.1.9:3005/users',
+    fetch('http://20.0.12.38:3005/users',
     {
       method:'POST',
       mode: 'cors',
@@ -15,7 +15,7 @@ function SignupForm(props) {
       body:JSON.stringify(data)
     }).then((res)=>{
       if(res.ok){
-        console.log("navigation is not working")
+        console.log("good going")
       }else{
         console.log("error while submiting form");
       }

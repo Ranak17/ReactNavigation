@@ -57,7 +57,6 @@ app.post('/users', (req, res)=> {
     client.query(insertQuery, (err, result)=>{
         if(!err){
             res.send('Insertion was successful');
-            NavigationPreloadManager.na
         }
         else{ console.log(err.message) }
     })
