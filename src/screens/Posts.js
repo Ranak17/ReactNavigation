@@ -71,7 +71,7 @@ function Posts({route}) {
         <View style={{backgroundColor:'white',height:70,flexDirection:'row'}}>
         <View style={{flex:.2,height:'100%',justifyContent:'center',alignItems:'center'}}>
             <View style={{width:45,height:45,marginLeft:5,borderRadius:100,overflow:'hidden'}}>
-                <Image style={{width:45,height:45}} source={require('../../assets/1.png')} /> 
+                <Image style={{width:45,height:45}} source={require('../../assets/shiva.jpg')} /> 
             </View>
         </View>
         <View style={{flex:.7,height:'100%'}}>
@@ -84,7 +84,7 @@ function Posts({route}) {
         </View>
         </View>
         <View style={{height:270,alignItems:'center',justifyContent:'center'}}>
-            <Image style={{flex:1,resizeMode:'cover',height:200,width:200}} source={ele.item.picSource} />
+            <Image style={{flex:1,resizeMode:'cover'}} source={ele.item.picSource} />
         </View>
         <View style={{height:30,flexDirection:'row',justifyContent:'space-between'}}>
             <View style={{flexDirection:'row',flex:.5}}>

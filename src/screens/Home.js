@@ -27,10 +27,11 @@ export default function Home({navigation}) {
     <ScrollView   contentContainerStyle={{
     minHeight: '100%',
     paddingBottom: 60,
+    backgroundColor:'white'
   }}>
-    <View style={{flex:1,backgroundColor:'white'}}>
+    <View style={{flex:1}}>
         <StatusBar />
-        <View style={{marginHorizontal:10,flex:.6,backgroundColor:'white'}}>
+        <View style={{marginHorizontal:10,flex:.6}}>
         <View style={{height:100,width:'100%',marginTop:5}}>
           <View style={{flexDirection:'row',flex:1}}>
             <View style={{borderRadius:100,overflow:'hidden',width:100,alignItems:'center',justifyContent:'center'}}>
@@ -80,11 +81,15 @@ export default function Home({navigation}) {
           </View>
         </View>
         <View style={{height:30,flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
+          <TouchableOpacity style={Style.icon} onPress={()=>{scrollRef.current.scrollTo({x:-phoneWidth,y:0,animated:true});}}><MaterialIcons name="grid-on" size={24} color="gray" /></TouchableOpacity>
           <TouchableOpacity style={Style.icon} onPress={()=>scrollRef.current.scrollTo({x:phoneWidth,y:0,animated:true})}><MaterialIcons name="grid-on" size={24} color="gray" /></TouchableOpacity>
-          <TouchableOpacity style={Style.icon} onPress={()=>scrollRef.current.scrollTo({x:-phoneWidth,y:0,animated:true})}><MaterialIcons name="grid-on" size={24} color='gray' /></TouchableOpacity>
         </View>
         </View>
-        <ScrollView horizontal ref={scrollRef}>
+        <ScrollView 
+        showsHorizontalScrollIndicator={true}
+          contentInset={{ top: -20 }}
+  contentOffset={{ x: 0, y: 20 }} 
+        horizontal ref={scrollRef} style={{flex:1}}>
           <View style={{width:phoneWidth,flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
             {names.map((ele,index)=>{
               return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
@@ -93,7 +98,14 @@ export default function Home({navigation}) {
             })}
             
         </View>
-        <View style={{width:phoneWidth,backgroundColor:'pink'}}><Text>Karan</Text></View>
+        <View style={{width:phoneWidth,flex:.4,marginTop:4,flexDirection:'row',justifyContent:'space-between',flexWrap:"wrap"}}>
+            {names.map((ele,index)=>{
+              return(<TouchableOpacity key={index} style={Style.post} onPress={()=>{navigation.navigate("Posts",{id:index})}}>
+              <Image resizeMode='contain' style={Style.postPic} source={ele.picSource}/>
+            </TouchableOpacity>)
+            })}
+            
+        </View>
       </ScrollView>
 
 
@@ -133,7 +145,7 @@ icon:{
 },
 post:{
   height:130,
-  width:126,
+  width:"32.8%",
   marginBottom:2
 },
 postPic:{
